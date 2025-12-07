@@ -264,22 +264,22 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="form-group">
-                    <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
+                    <input type="text" id="cust_name" name="name" class="form-control" placeholder="Enter Name" required>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                    <input type="email" id="cust_mailid" name="email" class="form-control" placeholder="Enter Email" required>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
-                    <input type="text" name="phone" class="form-control" placeholder="Enter Phone" required>
+                    <input type="text" id="contactno" name="phone" class="form-control" placeholder="Enter Phone" required>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
-                    <select class="form-select" name="service" required>
+                    <select class="form-select" id="chosenservice" name="service" required>
                         <option value="">Choose Service</option>
                         <option value="Smart Phone Service">Smart Phone Service</option>
                         <option value="Laptop Services">Laptop Services</option>
@@ -292,7 +292,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
-                    <input type="date" name="date" class="form-control" required>
+                    <input type="date" id="appoint_date" name="date" class="form-control" required>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -1423,18 +1423,35 @@
 <script>
 	
 function sendWhatsApp() {
-    var name = document.getElementsByName("name")[0].value;
-    var email = document.getElementsByName("email")[0].value;
-    var phone = document.getElementsByName("phone")[0].value;
-    var service = document.getElementsByName("service")[0].value;
-    var date = document.getElementsByName("date")[0].value;
+    var name = document.getElementById("cust_name").value;
+    var email = document.getElementById("cust_mailid").value;
+    var phone = document.getElementById("contactno").value;
+    var service = document.getElementById("chosenservice").value;
+    var date = document.getElementById("appoint_date").value;
 
     var whatsappNumber = "9566609190";  // Techkudil number
 
-    if(!name || !email || !mobile || !service || !date) {
-        alert("Please fill all fields");
-        return;
+	if(!name){
+		document.getElementById("cust_name").foxus();
+		return;
+	}
+    if(!email){
+		document.getElementById("cust_mailid").focus();
+		return;
     }
+	if(!phone){
+		document.getElementById("contactno").focus();
+		return;
+    }
+	if(!service){
+		document.getElementById("chosenservice").focus();
+		return;
+    }
+	if(!date){
+		document.getElementById("appoint_date").focus();
+		return;
+    }
+	
 
     var message =
         "Techkudil Service Request:%0A%0A" +
