@@ -1460,7 +1460,6 @@ function sendWhatsApp() {
         "Contact Number: " + encodeURIComponent(phone) + "%0A" +
         "Service Needed: " + encodeURIComponent(service) + "%0A" +
         "Preferred Date: " + encodeURIComponent(date) + "%0A";
-	console.log(message);
     var url = "https://wa.me/" + whatsappNumber + "?text=" + message;
 
     window.open(url, "_blank");
