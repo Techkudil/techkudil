@@ -1431,10 +1431,7 @@ function sendWhatsApp() {
 
     var whatsappNumber = "9566609190";  // Techkudil number
 
-    if(!name || !email || !phone || !service || !date) {
-        alert("Please fill all fields");
-        return;
-    }
+   
 
     var message =
         "Techkudil Service Request:%0A%0A" +
@@ -1443,7 +1440,7 @@ function sendWhatsApp() {
         "Contact Number: " + encodeURIComponent(phone) + "%0A" +
         "Service Needed: " + encodeURIComponent(service) + "%0A" +
         "Preferred Date: " + encodeURIComponent(date) + "%0A";
-
+	console.log(message);
     var url = "https://wa.me/" + whatsappNumber + "?text=" + message;
 
     window.open(url, "_blank");
