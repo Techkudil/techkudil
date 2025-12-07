@@ -239,30 +239,30 @@
                                     <h2>Get In Touch</h2>
                                     <p>Contact Techkudil today for fast support on mobile service, laptop repair, PlayStation sales, and accessories. Our team is always ready to help you with quick responses and trusted solutions. </p>
                                 </div>
-                                <form method="post" action="/techkudil/assets/php/contact.php" id="contact-form">
+                                <form id="contact-form">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="name"
+                                                <input type="text" class="form-control" id="cust_name" name="name"
                                                     placeholder="Your Name" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="email" class="form-control" name="email"
+                                                <input type="email" class="form-control" id="cust_emailid" name="email"
                                                     placeholder="Your Email" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="subject"
+                                        <input type="text" class="form-control" name="subject" id="cust_subject" 
                                             placeholder="Your Subject" required>
                                     </div>
                                     <div class="form-group">
-                                        <textarea name="message" cols="30" rows="5" class="form-control"
+                                        <textarea id="cust_msg" name="message" cols="30" rows="5" class="form-control"
                                             placeholder="Write Your Message" required></textarea>
                                     </div>
-                                    <button type="submit" class="theme-btn">Send
+                                    <button onclick="sendMessage()" type="submit" class="theme-btn">Send
                                         Message <i class="far fa-paper-plane"></i></button>
                                     <div class="col-md-12 mt-3">
                                         <div class="form-messege text-success"></div>
@@ -402,7 +402,44 @@
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/contact-form.js"></script>
     <script src="assets/js/main.js"></script>
+	<script>
+		function sendMessage(){
+			 var name = document.getElementById("cust_name").value;
+    var email = document.getElementById("cust_emailid").value;
+    var msg = document.getElementById("cust_msg").value;
+    var subject = document.getElementById("cust_subject").value;
 
+    var whatsappNumber = "9566609190";  // Techkudil number
+
+	if(!name){
+		document.getElementById("cust_name").foxus();
+		return;
+	}
+    if(!email){
+		document.getElementById("cust_mailid").focus();
+		return;
+    }
+	if(!msg){
+		document.getElementById("cust_msg").focus();
+		return;
+    }
+	if(!subject){
+		document.getElementById("cust_subject").focus();
+		return;
+    }
+	
+
+    var message =
+        "Techkudil Request:%0A%0A" +
+        "Name: " + encodeURIComponent(name) + "%0A" +
+        "Email: " + encodeURIComponent(email) + "%0A" +
+        "Subject: " + encodeURIComponent(subject) + "%0A" +
+        "Message: " + encodeURIComponent(msg) + "%0A" +
+    var url = "https://wa.me/" + whatsappNumber + "?text=" + message;
+
+    window.open(url, "_blank");
+		}
+	</script>
 </body>
 
 </html>
