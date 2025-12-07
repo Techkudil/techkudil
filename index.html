@@ -1431,7 +1431,10 @@ function sendWhatsApp() {
 
     var whatsappNumber = "9566609190";  // Techkudil number
 
-   
+    if(!name || !email || !mobile || !service || !date) {
+        alert("Please fill all fields");
+        return;
+    }
 
     var message =
         "Techkudil Service Request:%0A%0A" +
